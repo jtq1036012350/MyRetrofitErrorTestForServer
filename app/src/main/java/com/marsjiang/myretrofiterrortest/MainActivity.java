@@ -27,7 +27,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         http://jiang-pc:8080/MyLoginTest/servlet/UserLoginServlet
-        ipPortString = "192.168.10.19:8080";
+        ipPortString = "192.168.1.104:8080";
         String url = "http://" + ipPortString + "/MyLoginTest/servlet/";
         retrofit = new Retrofit.Builder()
                 .baseUrl(url)
