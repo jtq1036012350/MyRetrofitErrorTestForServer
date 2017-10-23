@@ -1,10 +1,13 @@
 package com.marsjiang.myretrofiterrorhandle.myretrofit;
 
+import android.util.Log;
+
 import com.google.gson.Gson;
 import com.google.gson.TypeAdapter;
 import com.google.gson.stream.JsonReader;
 import com.marsjiang.myretrofiterrorhandle.exception.MyException;
 import com.marsjiang.myretrofiterrorhandle.http.BaseEntity;
+import com.marsjiang.myretrofiterrorhandle.model.UserInfo;
 
 import java.io.IOException;
 import java.io.StringReader;
@@ -36,6 +39,8 @@ final class MyGsonResponseBodyConverter<T> implements Converter<ResponseBody, T>
         String json = value.string();
         try {
             verify(json);
+//            BaseEntity<UserInfo> aa = gson.fromJson(json, BaseEntity.class);
+//            Log.d("returnInfo", "成功" + aa.getData());
 //            return adapter.read(jsonReader);
             return adapter.read(gson.newJsonReader(new StringReader(json)));
         } finally {
@@ -44,9 +49,10 @@ final class MyGsonResponseBodyConverter<T> implements Converter<ResponseBody, T>
     }
 
     private void verify(String json) {
-        BaseEntity result = gson.fromJson(json, BaseEntity.class);
+        BaseEntity<UserInfo> result = gson.fromJson(json, BaseEntity.class);
+        Log.d("returnInfo", json);
         if (result.getCode() != SUCCESS) {
-            int a = result.getCode();
+//            int a = result.getCode();
             switch (result.getCode()) {
                 case SERVER_EXCEPTION:
                     throw new MyException(result.getMsg());

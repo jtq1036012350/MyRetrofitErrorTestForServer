@@ -1,10 +1,10 @@
 package com.marsjiang.myretrofiterrorhandle.model;
 
 /**
- * User
+ * UserInfo
  * Created by jaycee on 2017/6/23.
  */
-public class User {
+public class UserInfo {
     private String username;
     private String userpass;
 

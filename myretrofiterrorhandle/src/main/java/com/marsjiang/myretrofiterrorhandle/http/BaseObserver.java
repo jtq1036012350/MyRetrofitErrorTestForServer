@@ -4,6 +4,8 @@ import android.content.Context;
 import android.util.Log;
 import android.widget.Toast;
 
+import com.google.gson.Gson;
+
 import io.reactivex.Observer;
 import io.reactivex.disposables.Disposable;
 
@@ -29,6 +31,8 @@ public abstract class BaseObserver<T> implements Observer<BaseEntity<T>> {
     public void onNext(BaseEntity<T> value) {
         if (value.isSuccess()) {
             T t = value.getData();
+            Gson gson = new Gson();
+            Log.d("returnInfo", "onNext" + gson.toJson(value));
             onHandleSuccess(t);
         } else {
             onHandleError(value.getMsg());

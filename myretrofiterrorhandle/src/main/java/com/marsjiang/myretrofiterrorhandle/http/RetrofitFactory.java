@@ -5,7 +5,7 @@ import android.util.Log;
 import com.google.gson.FieldNamingPolicy;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
-import com.marsjiang.myretrofiterrorhandle.model.User;
+import com.marsjiang.myretrofiterrorhandle.model.UserInfo;
 import com.marsjiang.myretrofiterrorhandle.myretrofit.MyGsonConverterFactory;
 
 import java.io.IOException;
@@ -25,7 +25,7 @@ import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory;
  */
 public class RetrofitFactory {
 
-    private static final String BASE_URL = "http://192.168.10.19:8080/XiaoXiao/Server/";
+    private static final String BASE_URL = "http://192.168.10.19:8080/MyLoginTest/servlet/";
 
     private static final long TIMEOUT = 30;
 
@@ -74,7 +74,7 @@ public class RetrofitFactory {
                 .serializeNulls()
                 .setFieldNamingPolicy(FieldNamingPolicy.IDENTITY)
                 // 此处可以添加Gson 自定义TypeAdapter
-                .registerTypeAdapter(User.class, new UserTypeAdapter())
+                .registerTypeAdapter(UserInfo.class, new UserTypeAdapter())
                 .create();
     }
 }

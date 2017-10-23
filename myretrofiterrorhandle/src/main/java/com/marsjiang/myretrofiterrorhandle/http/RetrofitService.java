@@ -1,7 +1,7 @@
 package com.marsjiang.myretrofiterrorhandle.http;
 
 
-import com.marsjiang.myretrofiterrorhandle.model.User;
+import com.marsjiang.myretrofiterrorhandle.model.UserInfo;
 import com.marsjiang.myretrofiterrorhandle.model.VideoUrl;
 
 import java.util.Map;
@@ -20,8 +20,8 @@ import retrofit2.http.Query;
 public interface RetrofitService {
 
     //    @FormUrlEncoded
-    @GET("UserTest.txt")
-    Observable<BaseEntity<User>> login();
+    @GET("UserLoginServlet")
+    Observable<BaseEntity<UserInfo>> login(@Query("username") String username, @Query("password") String password);
 
     @GET("video/getUrl")
     Observable<BaseEntity<VideoUrl>> getVideoUrl(
