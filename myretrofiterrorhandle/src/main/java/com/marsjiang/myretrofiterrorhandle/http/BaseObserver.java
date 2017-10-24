@@ -35,6 +35,7 @@ public abstract class BaseObserver<T> implements Observer<BaseEntity<T>> {
             Log.d("returnInfo", "onNext" + gson.toJson(value));
             onHandleSuccess(t);
         } else {
+            Log.d("returnInfo", "onNext走了失败！" );
             onHandleError(value.getMsg());
         }
     }
@@ -42,6 +43,7 @@ public abstract class BaseObserver<T> implements Observer<BaseEntity<T>> {
     @Override
     public void onError(Throwable e) {
         Log.e(TAG, "onError:" + e.toString());
+        onHandleError(e.toString());
     }
 
     @Override

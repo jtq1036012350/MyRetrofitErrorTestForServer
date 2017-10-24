@@ -11,7 +11,7 @@ public class BaseEntity<T> {
     private T data;
 
     public boolean isSuccess() {
-        return code == 0;
+        return code == 1;
     }
 
     public int getCode() {
